@@ -3,13 +3,15 @@ import pymongo
 from pyquery import PyQuery as pq
 import multiprocessing as mp
 
+# 获得Mongodb连接
 def getMongoConnection():
     client = pymongo.MongoClient('mongodb://admin:123456@localhost')
     db = client.spider
     collection = db.test
     return collection
-def detailInfo(baseUrl, detailUrl):
 
+# 获取每条的详细信息
+def detailInfo(baseUrl, detailUrl):
     url = baseUrl + detailUrl
     resource = requests.get(url)
     document = pq(resource.text)
@@ -28,6 +30,7 @@ def detailInfo(baseUrl, detailUrl):
     }
     return detail
 
+# 获取每页信息
 def processHandler(baseurl, targetUrl):
     url = baseurl + targetUrl
     print(f'start handler {url} resource.....')
@@ -63,8 +66,8 @@ def processHandler(baseurl, targetUrl):
     collection.insert_many(saveList)
 
 
+# main方法
 if __name__ == '__main__':
-
     baseUrl = "https://static1.scrape.cuiqingcai.com"
     r = requests.get(baseUrl)
     html = r.text
