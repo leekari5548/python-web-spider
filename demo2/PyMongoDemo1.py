@@ -1,8 +1,8 @@
 import pymongo
 
 if __name__ == '__main__':
-    # client = pymongo.MongoClient(host='39.96.204.153', port=27017)
-    client = pymongo.MongoClient('mongodb://admin:123456@39.96.204.153:27017')
+    # client = pymongo.MongoClient(host='localhost', port=27017)
+    client = pymongo.MongoClient('mongodb://admin:123456@localhost:27017')
     db = client.spider
     print(db)
     collection = db.students

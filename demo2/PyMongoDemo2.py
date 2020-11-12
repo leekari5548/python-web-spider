@@ -1,7 +1,7 @@
 import pymongo
 
 if __name__ == '__main__':
-    client = pymongo.MongoClient('mongodb://admin:123456@39.96.204.153:27017')
+    client = pymongo.MongoClient('mongodb://admin:123456@localhost3:27017')
     db = client.spider
     collection = db.students
 
